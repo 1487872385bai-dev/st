@@ -1,7 +1,7 @@
 {
   "version": "1.0.2",
-  "publishedAt": "2026-08-23T09:27:51.165Z",
-  "notes": "新增自动更新功能：后续新版本可在应用内一键升级（电脑版 + 安卓版）",
+  "publishedAt": "2026-08-23T10:46:25.641Z",
+  "notes": "新增应用内自动更新：后续新版本可在应用内一键升级（电脑版 + 安卓版）",
   "win64": {
     "file": "ShorTplayer-1.0.2.exe",
     "size": 91637487,
@@ -15,7 +15,7 @@
   "android": {
     "file": "ShorTplayer-1.0.2.apk",
     "size": 56663656,
-    "sha256": "32eac70bb943ce604087b08cf27862f7f7e563036938f7d4359b3dbcfc767a6c"
+    "sha256": "8fa978ce6c9a75db4ff2a1fe5a3427483995f1a7959b83386c2eb31161958b2a"
   },
-  "signature": "tbXT9VTP9+7VlAwVVeb/7wtPtySf/CBzoH9jxiaIjQluqXIVl292cbF4xPLw9vBUv7GQ/zSmAUMIgfn5vTVVDQ=="
+  "signature": "pd3rtB8ymKZz5WID+6Hw0IUSOaAQBaS5rqG+rs377Om6uwHRTXRxQoVvu9SBPbHN/gjCumhWQUOK/h1oJEMxAw=="
 }
