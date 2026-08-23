@@ -1,26 +1,26 @@
-{
-  "version": "1.0.3",
-  "publishedAt": "2026-08-23T11:38:34.611Z",
-  "notes": "v1.0.3：优化播放体验，完善自动更新",
-  "win64": {
-    "file": "ShorTplayer-1.0.3.exe",
-    "size": 91637525,
-    "sha256": "5d066a46ffa0e0660f05ab601defbdafe0fec80a9b4de69cc0dd24ee2d1a7a91",
-    "zip": {
-      "file": "ShorTplayer-1.0.3.zip",
-      "size": 33448227,
-      "sha256": "edb2aee372df880ea664070bfad52912bcc9d13d9d3fcff0b3bd8a9a83a12a06"
-    },
-    "public": {
-      "file": "public-1.0.3.zip",
-      "size": 288549,
-      "sha256": "62300b0a3255bf7106af863922d08923a1809ca59065ab6f8f36f1bfd998de01"
-    }
-  },
-  "android": {
-    "file": "ShorTplayer-1.0.3.apk",
-    "size": 56680036,
-    "sha256": "c13189ac89d797fc914228335c97ec24bd985bd3d217bf53e3837fb1693d36d9"
-  },
-  "signature": "IkXsbh9YVNHPLTe1J0+aDj6Y0YwPGrHJFp4g7y+mSSTidYTMW0Ekmwaw34SG7EMAh8ElZPcEq20B/E9UlOsRDw=="
+﻿{
+    "version":  "1.0.3",
+    "publishedAt":  "2026-08-23T12:29:01.862Z",
+    "notes":  "v1.0.3：优化播放体验，完善自动更新",
+    "win64":  {
+                  "file":  "ShorTplayer-1.0.3.exe",
+                  "size":  91637525,
+                  "sha256":  "5d066a46ffa0e0660f05ab601defbdafe0fec80a9b4de69cc0dd24ee2d1a7a91",
+                  "zip":  {
+                              "file":  "ShorTplayer-1.0.3.zip",
+                              "size":  230190815,
+                              "sha256":  "808641a1398be5398214ec2e88e48088cb05c113a685ede84b483ee2257640b4"
+                          },
+                  "public":  {
+                                 "file":  "public-1.0.3.zip",
+                                 "size":  288549,
+                                 "sha256":  "62300b0a3255bf7106af863922d08923a1809ca59065ab6f8f36f1bfd998de01"
+                             }
+              },
+    "android":  {
+                    "file":  "ShorTplayer-1.0.3.apk",
+                    "size":  56680036,
+                    "sha256":  "c13189ac89d797fc914228335c97ec24bd985bd3d217bf53e3837fb1693d36d9"
+                },
+    "signature":  "IkXsbh9YVNHPLTe1J0+aDj6Y0YwPGrHJFp4g7y+mSSTidYTMW0Ekmwaw34SG7EMAh8ElZPcEq20B/E9UlOsRDw=="
 }
