@@ -192,18 +192,18 @@ body {
         <div class="version-label">当前版本</div>
         <div class="version-row">
             <!-- ====== 在这里修改版本号 ====== -->
-            <div class="version-number">1.0.1</div>
+            <div class="version-number">1.0.2</div>
             <div class="download-btns">
                 <!-- ====== 在这里修改下载链接和文件大小 ====== -->
-                <a href="https://github.com/1487872385bai-dev/shortplayer-download/releases/download/v1.0.1/ShorTplayer1.0.1.zip" class="download-btn" id="downloadLink">
+                <a href="/updates/ShorTplayer-1.0.2.exe" class="download-btn" id="downloadLink">
                     <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5L10.5 4.5V11.5H3V5.5Z"/><path d="M11.5 4.35L21 3V11.5H11.5V4.35Z"/><path d="M3 12.5H10.5V19.5L3 18.5V12.5Z"/><path d="M11.5 12.5H21V21L11.5 19.65V12.5Z"/></svg>
                     下载 Windows 版
-                    <span class="size">77.8 MB</span>
+                    <span class="size">87.4 MB</span>
                 </a>
                 <a href="#" class="download-btn android-btn" id="androidLink">
                     <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><line x1="8" y1="3.5" x2="6.2" y2="1.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="16" y1="3.5" x2="17.8" y2="1.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5.5 9a6.5 6.5 0 0 1 13 0v1.2h-13V9Z"/><circle cx="9.2" cy="7.2" r="0.9" fill="#fff"/><circle cx="14.8" cy="7.2" r="0.9" fill="#fff"/><rect x="4.5" y="10.8" width="15" height="9.5" rx="2.2"/><rect x="1.5" y="11.2" width="3" height="7.5" rx="1.5"/><rect x="19.5" y="11.2" width="3" height="7.5" rx="1.5"/><rect x="7.2" y="20" width="3" height="3.5" rx="1.5"/><rect x="13.8" y="20" width="3" height="3.5" rx="1.5"/></svg>
                     下载 Android 版
-                    <span class="size">-- MB</span>
+                    <span class="size">54.0 MB</span>
                 </a>
             </div>
         </div>
@@ -211,12 +211,12 @@ body {
             <div class="info-item">
                 <div class="info-label">发布时间</div>
                 <!-- ====== 在这里修改发布时间 ====== -->
-                <div class="info-value">2026/08/22</div>
+                <div class="info-value">2026/08/23</div>
             </div>
             <div class="info-item">
                 <div class="info-label">文件大小</div>
                 <!-- ====== 在这里修改文件大小 ====== -->
-                <div class="info-value">77.8 MB</div>
+                <div class="info-value">87.4 MB</div>
             </div>
         </div>
 
@@ -224,15 +224,13 @@ body {
         <!-- ====== 在这里修改更新说明，不需要可以删除整个 notes-section 区块 ====== -->
         <div class="notes-section">
             <div class="notes-title">更新说明</div>
-            <div class="notes-content">- 版本 1.0.1 发布
-- 修复已知问题
-- 优化使用体验</div>
+            <div class="notes-content">新增应用内自动更新：后续新版本可在应用内一键升级（电脑版 + 安卓版）</div>
         </div>
 
         <!-- ====== 在这里修改 SHA256，不需要可以删除整个 sha256-section 区块 ====== -->
         <div class="sha256-section">
             <div class="sha256-label">SHA256 校验</div>
-            <div class="sha256-value">0006175bfdf5ddb3b3d4a8504024cf610a892e1bd35873add52c7daec587d448</div>
+            <div class="sha256-value">98ef74145fcbfbd292ad71fa9effc97e562a94c6ced2d1f1c9c17b8d81867f0f</div>
         </div>
     </div>
 
@@ -399,53 +397,69 @@ body {
     </div>
 </div>
 <script>
-// 页面加载时自动获取 GitHub 最新 Release 信息
-fetch('https://api.github.com/repos/1487872385bai-dev/st/releases/latest')
-  .then(function(response) { return response.json(); })
+// 页面加载时从更新清单读取版本与下载信息（与自动更新共用同一份数据）
+function resolveUrl(file) {
+  if (!file) return '';
+  if (/^https?:\/\//i.test(file)) return file;
+  return '/updates/' + String(file).split('/').pop();
+}
+function fmtSize(bytes) {
+  bytes = Number(bytes) || 0;
+  return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+}
+
+fetch('/updates/version.json', { headers: { 'Accept': 'application/json' } })
+  .then(function(response) {
+    if (!response.ok) throw new Error('manifest ' + response.status);
+    return response.json();
+  })
   .then(function(data) {
-    if (!data.tag_name) return;
-    // 版本号（去掉 v 前缀）
-    var version = data.tag_name.replace(/^v/, '');
-    document.querySelector('.version-number').textContent = version;
-    // 下载链接和文件大小
-    if (data.assets && data.assets.length > 0) {
-      var asset = data.assets[0];
+    if (!data || !data.version) return;
+    document.querySelector('.version-number').textContent = data.version;
+
+    var infoVals = document.querySelectorAll('.info-value');
+    if (data.publishedAt && infoVals[0]) {
+      var d = new Date(data.publishedAt);
+      var fmt = d.getFullYear() + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + String(d.getDate()).padStart(2, '0');
+      infoVals[0].textContent = fmt;
+    }
+
+    var win = data.win64 || {};
+    if (win.file) {
       var link = document.getElementById('downloadLink');
-      link.href = asset.browser_download_url;
-      var sizeMB = (asset.size / (1024 * 1024)).toFixed(1);
-      document.querySelector('.download-btn .size').textContent = sizeMB + ' MB';
-      var infoVals = document.querySelectorAll('.info-value');
-      if (infoVals[1]) infoVals[1].textContent = sizeMB + ' MB';
-    }
-    // 发布时间
-    if (data.published_at) {
-      var d = new Date(data.published_at);
-      var fmt = d.getFullYear() + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + String(d.getDate()).padStart(2,'0');
-      var infoVals = document.querySelectorAll('.info-value');
-      if (infoVals[0]) infoVals[0].textContent = fmt;
-    }
-    // 更新说明
-    if (data.body) {
-      document.querySelector('.notes-content').textContent = data.body.trim();
-    }
-    // Android 下载按钮（如果 Release 里有 apk 文件则自动更新）
-    if (data.assets && data.assets.length > 0) {
-      var apk = data.assets.find(function(a) { return a.name.endsWith('.apk'); });
-      if (apk) {
-        var aLink = document.getElementById('androidLink');
-        if (aLink) {
-          aLink.href = apk.browser_download_url;
-          var aSize = (apk.size / (1024 * 1024)).toFixed(1);
-          aLink.querySelector('.size').textContent = aSize + ' MB';
-        }
+      if (link) {
+        link.href = resolveUrl(win.file);
+        var sizeMB = fmtSize(win.size);
+        var sizeEl = link.querySelector('.size');
+        if (sizeEl) sizeEl.textContent = sizeMB;
+        if (infoVals[1]) infoVals[1].textContent = sizeMB;
       }
     }
-    // SHA256 无法自动获取，隐藏避免显示错误信息
-    var shaSection = document.querySelector('.sha256-section');
-    if (shaSection) shaSection.style.display = 'none';
+
+    if (data.notes) {
+      var notesEl = document.querySelector('.notes-content');
+      if (notesEl) notesEl.textContent = data.notes;
+    }
+
+    var android = data.android || {};
+    if (android.file) {
+      var aLink = document.getElementById('androidLink');
+      if (aLink) {
+        aLink.href = resolveUrl(android.file);
+        var aSizeEl = aLink.querySelector('.size');
+        if (aSizeEl) aSizeEl.textContent = fmtSize(android.size);
+      }
+    }
+
+    if (win.sha256) {
+      var shaVal = document.querySelector('.sha256-value');
+      if (shaVal) shaVal.textContent = win.sha256;
+      var shaSection = document.querySelector('.sha256-section');
+      if (shaSection) shaSection.style.display = '';
+    }
   })
   .catch(function(err) {
-    console.error('获取版本信息失败:', err);
+    console.error('获取更新清单失败:', err);
     // 获取失败时保留页面默认内容
   });
 
