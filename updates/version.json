@@ -1,7 +1,7 @@
-﻿{
-    "version":  "1.0.3",
-    "publishedAt":  "2026-08-23T18:39:45.510Z",
-    "notes":  "v1.0.3：优化播放体验，完善自动更新",
+{
+    "version":  "1.0.4",
+    "publishedAt":  "2026-08-27T14:44:25.722Z",
+    "notes":  "v1.0.4：优化使用体验",
     "win64":  {
                   "file":  "ShorTplayer-1.0.3.exe",
                   "size":  91637525,
@@ -18,9 +18,9 @@
                              }
               },
     "android":  {
-                    "file":  "ShorTplayer-1.0.3.apk",
-                    "size":  56680036,
-                    "sha256":  "c13189ac89d797fc914228335c97ec24bd985bd3d217bf53e3837fb1693d36d9"
+                    "file":  "ShorTplayer-1.0.4.apk",
+                    "size":  56680120,
+                    "sha256":  "16e613a40fedb4226ca598de98f509003cf183672641fcc8d6feb1bf6b362eaf"
                 },
     "signature":  "IkXsbh9YVNHPLTe1J0+aDj6Y0YwPGrHJFp4g7y+mSSTidYTMW0Ekmwaw34SG7EMAh8ElZPcEq20B/E9UlOsRDw=="
 }
