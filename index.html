@@ -178,18 +178,25 @@ body {
 
 .btn-icon { vertical-align: middle; margin-right: 6px; margin-bottom: 2px; }
 
-.screenshot-gallery { display: flex; flex-direction: column; gap: 16px; }
-.screenshot-item {
-    display: block;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none;
+.carousel { position: relative; overflow: hidden; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+.carousel-track { display: flex; transition: transform 0.4s ease; }
+.carousel-slide { min-width: 100%; }
+.carousel-slide a { display: block; text-decoration: none; }
+.carousel-slide img { width: 100%; display: block; }
+.carousel-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.5); color: #fff; border: none;
+    width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+    font-size: 16px; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; z-index: 2; line-height: 1;
 }
-.screenshot-item:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.4); }
-.screenshot-item img { width: 100%; display: block; }
+.carousel-btn:hover { background: rgba(0,0,0,0.75); }
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
+.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+.carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+.carousel-dot:hover { background: rgba(255,255,255,0.5); }
+.carousel-dot.active { background: #667eea; transform: scale(1.3); }
 </style>
 </head>
 <body>
@@ -249,12 +256,17 @@ body {
 
     <div class="card">
         <div class="section-title">界面预览</div>
-        <div class="screenshot-gallery">
-            <a href="screenshot1.png" target="_blank" class="screenshot-item"><img src="screenshot1.png" alt="ShorTplayer 界面预览 1"></a>
-            <a href="screenshot2.png" target="_blank" class="screenshot-item"><img src="screenshot2.png" alt="ShorTplayer 界面预览 2"></a>
-            <a href="screenshot3.png" target="_blank" class="screenshot-item"><img src="screenshot3.png" alt="ShorTplayer 界面预览 3"></a>
-            <a href="screenshot4.png" target="_blank" class="screenshot-item"><img src="screenshot4.png" alt="ShorTplayer 界面预览 4"></a>
+        <div class="carousel" id="screenshotCarousel">
+            <button class="carousel-btn prev" onclick="carouselPrev()">&#10094;</button>
+            <button class="carousel-btn next" onclick="carouselNext()">&#10095;</button>
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide"><a href="screenshot1.png" target="_blank"><img src="screenshot1.png" alt="ShorTplayer 界面预览 1"></a></div>
+                <div class="carousel-slide"><a href="screenshot2.png" target="_blank"><img src="screenshot2.png" alt="ShorTplayer 界面预览 2"></a></div>
+                <div class="carousel-slide"><a href="screenshot3.png" target="_blank"><img src="screenshot3.png" alt="ShorTplayer 界面预览 3"></a></div>
+                <div class="carousel-slide"><a href="screenshot4.png" target="_blank"><img src="screenshot4.png" alt="ShorTplayer 界面预览 4"></a></div>
+            </div>
         </div>
+        <div class="carousel-dots" id="carouselDots"></div>
     </div>
 
     <div class="card">
@@ -324,6 +336,7 @@ body {
             </div>
             <div class="changelog-content">新增应用内自动更新：电脑版与安卓版检测到新版本后可直接一键升级，无需重新下载安装包</div>
         </div>
+        <div id="moreChangelog" style="display:none;">
         <div class="changelog-item">
             <div class="changelog-header">
                 <span class="changelog-version">v1.0.1</span>
@@ -338,6 +351,8 @@ body {
             </div>
             <div class="changelog-content">首个版本发布</div>
         </div>
+        </div>
+        <button class="toggle-btn" onclick="toggleChangelog()" id="changelogToggleBtn" style="margin-top:16px;">查看更多历史版本 &#9660;</button>
     </div>
 
     <div class="card">
@@ -565,6 +580,45 @@ function toggleFaq(el) {
   } else {
     answer.classList.add('show');
     el.innerHTML = el.innerHTML.replace('&#9660;', '&#9650;');
+  }
+}
+
+// ===== 截图轮播 =====
+var currentSlide = 0;
+var totalSlides = 4;
+function updateCarousel() {
+  var track = document.getElementById('carouselTrack');
+  if (track) track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+  var dots = document.querySelectorAll('.carousel-dot');
+  for (var i = 0; i < dots.length; i++) {
+    dots[i].classList.toggle('active', i === currentSlide);
+  }
+}
+function carouselNext() { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }
+function carouselPrev() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); }
+function goToSlide(i) { currentSlide = i; updateCarousel(); }
+(function() {
+  var dotsContainer = document.getElementById('carouselDots');
+  if (dotsContainer) {
+    for (var i = 0; i < totalSlides; i++) {
+      var dot = document.createElement('div');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = (function(idx) { return function() { goToSlide(idx); }; })(i);
+      dotsContainer.appendChild(dot);
+    }
+  }
+})();
+
+// ===== 更新日志折叠 =====
+function toggleChangelog() {
+  var el = document.getElementById('moreChangelog');
+  var btn = document.getElementById('changelogToggleBtn');
+  if (el.style.display === 'none') {
+    el.style.display = 'block';
+    btn.innerHTML = '收起历史版本 &#9650;';
+  } else {
+    el.style.display = 'none';
+    btn.innerHTML = '查看更多历史版本 &#9660;';
   }
 }
 </script>
