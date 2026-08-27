@@ -7,9 +7,9 @@
                   "size":  92094115,
                   "sha256":  "66cbdbb591755eaaf0204c5908dea464029ff81ef352cf2d0f31ca6ec44b872e",
                   "zip":  {
-                              "file":  "ShorTplayer-1.0.4.zip",
-                              "size":  33525337,
-                              "sha256":  "5294f3a642183172651f4cee19583eaa66bc727df0242fc80b6cad6e020bc1ca"
+                              "file":  "https://github.com/1487872385bai-dev/shortplayer-download/releases/download/v1.0.4/ShorTplayerV1.0.4.zip",
+                              "size":  243239126,
+                              "sha256":  "16399bb399279c09aa215abc24702f9de72dbf362b5cec811c70dbed5d50d1d6"
                           },
                   "public":  {
                                  "file":  "public-1.0.4.zip",
