@@ -1,20 +1,20 @@
 {
     "version":  "1.0.4",
-    "publishedAt":  "2026-08-27T14:44:25.722Z",
-    "notes":  "v1.0.4：优化使用体验",
+    "publishedAt":  "2026-08-27T14:35:39.999Z",
+    "notes":  "修复问题并优化体验，建议尽快更新。",
     "win64":  {
-                  "file":  "ShorTplayer-1.0.3.exe",
-                  "size":  91637525,
-                  "sha256":  "5d066a46ffa0e0660f05ab601defbdafe0fec80a9b4de69cc0dd24ee2d1a7a91",
+                  "file":  "ShorTplayer-1.0.4.exe",
+                  "size":  92094115,
+                  "sha256":  "66cbdbb591755eaaf0204c5908dea464029ff81ef352cf2d0f31ca6ec44b872e",
                   "zip":  {
-                              "file":  "https://github.com/1487872385bai-dev/shortplayer-download/releases/download/v1.0.3/ShorTplayerV1.0.3.zip",
-                              "size":  173007451,
-                              "sha256":  "e1034dd3a2dfd334a0d1bfc35b9328043f64881a0874a02792c435ca41064197"
+                              "file":  "ShorTplayer-1.0.4.zip",
+                              "size":  33525337,
+                              "sha256":  "5294f3a642183172651f4cee19583eaa66bc727df0242fc80b6cad6e020bc1ca"
                           },
                   "public":  {
-                                 "file":  "public-1.0.3.zip",
-                                 "size":  288549,
-                                 "sha256":  "62300b0a3255bf7106af863922d08923a1809ca59065ab6f8f36f1bfd998de01"
+                                 "file":  "public-1.0.4.zip",
+                                 "size":  368168,
+                                 "sha256":  "73954397b76ad1c44348bc64613e63aa79da59de442c727d3ee287bc894ae001"
                              }
               },
     "android":  {
@@ -22,5 +22,5 @@
                     "size":  56680120,
                     "sha256":  "16e613a40fedb4226ca598de98f509003cf183672641fcc8d6feb1bf6b362eaf"
                 },
-    "signature":  "IkXsbh9YVNHPLTe1J0+aDj6Y0YwPGrHJFp4g7y+mSSTidYTMW0Ekmwaw34SG7EMAh8ElZPcEq20B/E9UlOsRDw=="
+    "signature":  "CXsXdtM672EUR/iDMq9ceEx77v/VTtPdyEWA63au35DYbUuBp6AqF4bS09qhFWm7GyNVTCKLDaBFS3Md9pbTAw=="
 }
