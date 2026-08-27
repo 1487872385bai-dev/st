@@ -177,6 +177,19 @@ body {
 @keyframes btnPulseAndroid { 0%,100% { box-shadow: 0 4px 16px rgba(61,220,132,0.3); } 50% { box-shadow: 0 4px 28px rgba(61,220,132,0.65); } }
 
 .btn-icon { vertical-align: middle; margin-right: 6px; margin-bottom: 2px; }
+
+.screenshot-gallery { display: flex; flex-direction: column; gap: 16px; }
+.screenshot-item {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+}
+.screenshot-item:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.4); }
+.screenshot-item img { width: 100%; display: block; }
 </style>
 </head>
 <body>
@@ -234,6 +247,15 @@ body {
         </div>
     </div>
 
+    <div class="card">
+        <div class="section-title">界面预览</div>
+        <div class="screenshot-gallery">
+            <a href="screenshot1.png" target="_blank" class="screenshot-item"><img src="screenshot1.png" alt="ShorTplayer 界面预览 1"></a>
+            <a href="screenshot2.png" target="_blank" class="screenshot-item"><img src="screenshot2.png" alt="ShorTplayer 界面预览 2"></a>
+            <a href="screenshot3.png" target="_blank" class="screenshot-item"><img src="screenshot3.png" alt="ShorTplayer 界面预览 3"></a>
+            <a href="screenshot4.png" target="_blank" class="screenshot-item"><img src="screenshot4.png" alt="ShorTplayer 界面预览 4"></a>
+        </div>
+    </div>
 
     <div class="card">
         <div class="section-title">核心功能</div>
