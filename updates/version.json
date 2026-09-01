@@ -18,7 +18,7 @@
                              }
               },
     "android":  {
-                    "file":  "ShorTplayer-1.0.5.apk",
+                    "file":  "https://github.com/1487872385bai-dev/st/releases/download/v1.0.5/ShorTplayer-1.0.5.apk",
                     "size":  234029096,
                     "sha256":  "a9ca082a28bf4d811bf6dd28ee3b5c5dcfb1099a23289cb10d8288c95d7c1186"
                 },
