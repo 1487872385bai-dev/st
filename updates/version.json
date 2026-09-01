@@ -1,7 +1,7 @@
 {
-    "version":  "1.0.4",
-    "publishedAt":  "2026-08-27T14:35:39.999Z",
-    "notes":  "修复问题并优化体验，建议尽快更新。",
+    "version":  "1.0.5",
+    "publishedAt":  "2026-09-01T12:55:59.493Z",
+    "notes":  "v1.0.5：修复问题并优化体验（安卓版）",
     "win64":  {
                   "file":  "ShorTplayer-1.0.4.exe",
                   "size":  92094115,
@@ -18,9 +18,9 @@
                              }
               },
     "android":  {
-                    "file":  "ShorTplayer-1.0.4.apk",
-                    "size":  56680120,
-                    "sha256":  "16e613a40fedb4226ca598de98f509003cf183672641fcc8d6feb1bf6b362eaf"
+                    "file":  "ShorTplayer-1.0.5.apk",
+                    "size":  234029096,
+                    "sha256":  "a9ca082a28bf4d811bf6dd28ee3b5c5dcfb1099a23289cb10d8288c95d7c1186"
                 },
     "signature":  "CXsXdtM672EUR/iDMq9ceEx77v/VTtPdyEWA63au35DYbUuBp6AqF4bS09qhFWm7GyNVTCKLDaBFS3Md9pbTAw=="
 }
